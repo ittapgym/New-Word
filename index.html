@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tui Xin Lỗi Mà</title>
+    <title>ittapgym</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -15,19 +15,28 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ff9a9e 0%, #ffe6f0 50%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #fdf0f5 0%, #fff9fb 50%, #fce8ed 100%);
             background-size: 300% 300%;
-            animation: luxuryGradient 15s ease infinite;
+            animation: romanticGradient 20s ease infinite;
             font-family: 'Poppins', sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            color: #5a3a4e;
         }
 
-        @keyframes luxuryGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes romanticGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .bg-overlay {
@@ -36,199 +45,266 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.2) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(255, 182, 193, 0.2) 0%, transparent 50%);
+            background:
+                radial-gradient(circle at 10% 20%, rgba(255, 228, 225, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(255, 228, 225, 0.15) 0%, transparent 30%);
             pointer-events: none;
-            animation: gradientShift 10s ease infinite;
+            z-index: -1;
         }
 
-        @keyframes gradientShift {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
+        .gold-dust {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background:
+                radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 80%),
+                radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 80%);
         }
 
         .particle {
             position: absolute;
             border-radius: 50%;
-            animation: float 6s infinite ease-in-out;
+            animation: float 8s infinite ease-in-out;
             pointer-events: none;
+            z-index: 1;
         }
 
         .particle-1 {
-            width: 5px;
-            height: 5px;
-            background: radial-gradient(circle, #ffb6c1 0%, transparent 70%);
-            box-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #d4af37 0%, transparent 70%);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
         }
 
         .particle-2 {
-            width: 8px;
-            height: 8px;
-            background: radial-gradient(circle, #ffe4e1 0%, transparent 70%);
-            box-shadow: 0 0 12px rgba(255, 182, 193, 0.5);
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #fff 0%, transparent 70%);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
 
-        .heart {
+        .rose {
             position: absolute;
-            animation: heartFloat 8s infinite ease-in-out;
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23ffb6c1" d="M50,15 C60,5 75,10 80,20 C85,30 80,40 70,45 C60,50 50,55 40,50 C30,45 25,35 30,25 C35,15 40,25 50,15 Z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: floatRose 12s infinite ease-in-out;
             opacity: 0;
             pointer-events: none;
+            filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
         }
 
-        .heart-shape {
-            width: 15px;
-            height: 13px;
-            background: #ffb6c1;
-            position: relative;
-            transform: rotate(-45deg);
-            border-radius: 50px 50px 0 0;
-            box-shadow: 0 0 15px rgba(255, 182, 193, 0.5);
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.7;
+            }
+
+            25% {
+                transform: translateY(-20px) translateX(10px) rotate(10deg);
+            }
+
+            50% {
+                transform: translateY(-40px) translateX(-10px) rotate(-10deg);
+                opacity: 1;
+            }
+
+            75% {
+                transform: translateY(-20px) translateX(-15px) rotate(5deg);
+            }
         }
 
-        .heart-shape::before,
-        .heart-shape::after {
-            content: '';
-            width: 15px;
-            height: 13px;
-            position: absolute;
-            background: #ffb6c1;
-            border-radius: 50px 50px 0 0;
-        }
-
-        .heart-shape::before {
-            top: -7px;
-            left: 0;
-            transform: rotate(45deg);
-        }
-
-        .heart-shape::after {
-            left: 7px;
-            top: 0;
-            transform: rotate(45deg);
-        }
-
-        @keyframes heartFloat {
+        @keyframes floatRose {
             0% {
-                transform: translateY(100vh) scale(0);
+                transform: translateY(100vh) scale(0.5) rotate(0deg);
                 opacity: 0;
             }
+
             10% {
                 opacity: 0.8;
             }
+
             90% {
                 opacity: 0.8;
             }
+
             100% {
-                transform: translateY(-50px) scale(1);
+                transform: translateY(-100px) scale(1) rotate(360deg);
                 opacity: 0;
             }
         }
 
         .container {
             position: relative;
-            max-width: 90%;
-            width: 100%;
+            max-width: 600px;
+            width: 90%;
             margin: 0 auto;
-            padding: 20px 10px;
+            padding: 30px 15px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            z-index: 10;
         }
 
-        .apology-card {
-            background: linear-gradient(135deg, rgba(255, 245, 247, 0.95), rgba(255, 230, 240, 0.9));
-            border-radius: 30px;
-            padding: 30px;
-            border: 2px solid rgba(255, 182, 193, 0.3);
-            box-shadow: 0 15px 40px rgba(255, 182, 193, 0.2);
-            animation: cardPulse 5s infinite ease-in-out;
+        .compliment-card {
+            background: linear-gradient(145deg, rgba(255, 250, 252, 0.95), rgba(255, 245, 250, 0.95));
+            border-radius: 24px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 209, 220, 0.4);
+            box-shadow:
+                0 15px 50px rgba(188, 143, 143, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+                0 0 30px rgba(212, 175, 55, 0.1) inset;
             position: relative;
-            max-width: 500px;
             width: 100%;
             text-align: center;
             transform-style: preserve-3d;
-            transition: transform 0.2s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(4px);
+            overflow: hidden;
         }
 
-        @keyframes cardPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.015); }
+        .compliment-card:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #ffd1dc, #fff0f5, #ffd1dc, #fff0f5);
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: shine 8s ease infinite;
+            border-radius: 28px;
+            opacity: 0.3;
         }
 
-        .sorry-text {
-            font-size: clamp(1.8rem, 6vw, 3rem);
+        @keyframes shine {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .compliment-card:hover {
+            box-shadow:
+                0 20px 60px rgba(188, 143, 143, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+                0 0 40px rgba(212, 175, 55, 0.15) inset;
+            transform: translateY(-5px);
+        }
+
+        .compliment-text {
+            font-size: clamp(2.2rem, 7vw, 3.5rem);
+            font-family: 'Cormorant Garamond', serif;
             font-weight: 700;
-            background: linear-gradient(45deg, #ff69b4, #ffe4e1, #ffb6c1);
-            background-size: 300% 300%;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: luxuryTextShine 3s infinite ease-in-out;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
-        }
-
-        @keyframes luxuryTextShine {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .apology-message {
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            color: #ff69b4;
-            margin-bottom: 30px;
-            line-height: 1.6;
-            font-weight: 500;
-        }
-
-        .image-container {
-            margin: 20px 0;
+            color: #8a4b6e;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
             display: inline-block;
         }
 
-        .sorry-image {
-            width: clamp(150px, 35vw, 220px);
-            height: clamp(150px, 35vw, 220px);
+        .compliment-text:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            border-radius: 2px;
+        }
+
+        .compliment-message {
+            font-size: clamp(1rem, 2.8vw, 1.2rem);
+            color: #7a5a6c;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            font-weight: 400;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            display: inline-block;
+            position: relative;
             border-radius: 50%;
-            border: 3px solid rgba(255, 182, 193, 0.7);
-            box-shadow: 0 0 30px rgba(255, 182, 193, 0.4);
-            transition: all 0.5s ease;
-            animation: imageFloat 5s infinite ease-in-out;
+            padding: 8px;
+            background: linear-gradient(145deg, #fff, #fce8ed);
+            box-shadow:
+                0 10px 30px rgba(188, 143, 143, 0.2),
+                0 0 0 8px rgba(255, 245, 250, 0.7),
+                0 0 0 10px rgba(212, 175, 55, 0.15);
+        }
+
+        .compliment-image {
+            width: clamp(160px, 40vw, 240px);
+            height: clamp(160px, 40vw, 240px);
+            border-radius: 50%;
             object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            transition: all 0.5s ease;
+            animation: imageFloat 6s infinite ease-in-out;
+            display: block;
+            overflow: hidden;
         }
 
         @keyframes imageFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
         }
 
-        .sorry-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(255, 182, 193, 0.6);
+        .compliment-image:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 0 40px rgba(255, 209, 220, 0.4);
         }
 
         .buttons {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             margin-top: 20px;
             flex-wrap: wrap;
-            align-items: center;
         }
 
         .btn {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             border: none;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            font-weight: 600;
+            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
             display: flex;
@@ -236,47 +312,59 @@
             align-items: center;
             justify-content: center;
             font-family: 'Poppins', sans-serif;
-            animation: bounceIn 0.5s ease-out;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            z-index: 2;
         }
 
-        @keyframes bounceIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            60% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); }
-        }
-
-        .btn-yes {
-            background: linear-gradient(45deg, #ffb6c1, #ff69b4);
-            color: #fff;
-            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .btn-no {
-            background: linear-gradient(45deg, #fff, #ffe4e1);
-            color: #ff69b4;
-            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.3);
-            border: 2px solid rgba(255, 182, 193, 0.4);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.5);
-        }
-
-        .btn::before {
+        .btn:before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+            z-index: 1;
         }
 
-        .btn:hover::before {
-            left: 100%;
+        .btn:hover:before {
+            transform: translateX(100%);
+        }
+
+        .btn-yes {
+            background: linear-gradient(145deg, #d4af37, #f1c27d);
+            color: #fff;
+            box-shadow:
+                0 10px 25px rgba(212, 175, 55, 0.3),
+                0 0 15px rgba(255, 255, 255, 0.4) inset;
+        }
+
+        .btn-no {
+            background: linear-gradient(145deg, #fff, #fce8ed);
+            color: #8a4b6e;
+            box-shadow:
+                0 10px 25px rgba(188, 143, 143, 0.15),
+                0 0 10px rgba(255, 255, 255, 0.6) inset;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow:
+                0 15px 30px rgba(188, 143, 143, 0.25),
+                0 0 20px rgba(255, 255, 255, 0.5) inset;
+        }
+
+        .btn:active {
+            transform: translateY(2px) scale(0.98);
+        }
+
+        .btn span {
+            display: block;
+            margin-top: 5px;
+            font-size: 1.8rem;
+            line-height: 1;
         }
 
         .modal {
@@ -286,9 +374,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 182, 193, 0.3);
+            background: rgba(250, 240, 245, 0.9);
+            backdrop-filter: blur(5px);
             z-index: 1000;
             padding: 10px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .modal-content {
@@ -296,202 +396,192 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, rgba(255, 245, 247, 0.95), rgba(255, 230, 240, 0.9));
-            padding: 30px;
-            border-radius: 20px;
+            background: linear-gradient(145deg, rgba(255, 250, 252, 0.98), rgba(255, 245, 250, 0.98));
+            padding: 40px 30px;
+            border-radius: 24px;
             text-align: center;
-            color: #ff69b4;
-            box-shadow: 0 15px 40px rgba(255, 182, 193, 0.3);
-            border: 2px solid rgba(255, 182, 193, 0.3);
-            animation: modalSlide 0.5s ease-out;
-            max-width: 85%;
+            color: #8a4b6e;
+            box-shadow:
+                0 25px 60px rgba(188, 143, 143, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+                0 0 40px rgba(212, 175, 55, 0.15) inset;
+            animation: modalSlide 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 90%;
             width: 100%;
-            max-height: 85%;
-            overflow-y: auto;
+            max-width: 500px;
+            border: 1px solid rgba(255, 209, 220, 0.4);
         }
 
         @keyframes modalSlide {
             from {
-                transform: translate(-50%, -50%) scale(0.9);
+                transform: translate(-50%, -60%);
                 opacity: 0;
             }
+
             to {
-                transform: translate(-50%, -50%) scale(1);
+                transform: translate(-50%, -50%);
                 opacity: 1;
             }
         }
 
         .modal-text {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            margin-bottom: 20px;
-            line-height: 1.5;
+            font-size: clamp(1.1rem, 2.8vw, 1.3rem);
+            margin-bottom: 30px;
+            line-height: 1.7;
         }
 
         .close-btn {
-            background: linear-gradient(45deg, #ffb6c1, #ff69b4);
+            background: linear-gradient(145deg, #d4af37, #f1c27d);
             border: none;
             color: white;
-            padding: 12px 25px;
-            border-radius: 15px;
+            padding: 14px 32px;
+            border-radius: 50px;
             cursor: pointer;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            font-weight: 600;
+            font-size: clamp(1rem, 2.2vw, 1.1rem);
+            font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         .close-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .close-btn:active {
+            transform: translateY(1px);
         }
 
         .facebook-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(45deg, #ff69b4, #ffb6c1);
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background: linear-gradient(145deg, #4267B2, #3b5998);
             color: white;
             text-decoration: none;
-            border-radius: 15px;
-            font-weight: 600;
+            border-radius: 50px;
+            font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.3);
+            box-shadow: 0 8px 20px rgba(59, 89, 152, 0.25);
+            margin-top: 20px;
+            font-size: clamp(0.95rem, 2.2vw, 1.05rem);
         }
 
         .facebook-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(59, 89, 152, 0.35);
         }
 
         .facebook-icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 8px;
-            vertical-align: middle;
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            fill: white;
         }
 
-        @keyframes wiggle {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(3deg); }
-            50% { transform: rotate(-3deg); }
-            75% { transform: rotate(2deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-        .celebration-heart {
+        .celebration {
             position: fixed;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             animation: celebrationFloat 3s ease-out forwards;
             z-index: 1001;
             pointer-events: none;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
         @keyframes celebrationFloat {
             0% {
-                transform: translateY(100vh) scale(0);
+                transform: translateY(100vh) scale(0.2);
                 opacity: 0;
             }
-            25% {
-                opacity: 0.8;
+
+            20% {
+                opacity: 1;
             }
-            75% {
-                opacity: 0.8;
+
+            80% {
+                opacity: 1;
             }
+
             100% {
-                transform: translateY(-50px) scale(1);
+                transform: translateY(-100px) scale(1.2);
                 opacity: 0;
             }
         }
 
-        .loading-heart {
-            display: inline-block;
-            animation: heartbeat 0.8s infinite;
+        .gold-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.3) inset;
+            pointer-events: none;
         }
 
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        @keyframes ripple {
-            0% {
-                width: 0px;
-                height: 0px;
-                opacity: 0.7;
-            }
-            100% {
-                width: 150px;
-                height: 150px;
-                opacity: 0;
-            }
+        .floating-text {
+            position: absolute;
+            font-size: 1.2rem;
+            color: rgba(138, 75, 110, 0.15);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 600;
+            transform: rotate(-15deg);
+            pointer-events: none;
+            z-index: 0;
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 15px 5px;
-            }
-            
-            .apology-card {
-                padding: 20px;
-                margin: 10px;
+            .compliment-card {
+                padding: 30px 20px;
                 border-radius: 20px;
             }
 
-            .sorry-text {
-                font-size: clamp(1.5rem, 5vw, 2.5rem);
-                letter-spacing: 1px;
-            }
-
-            .apology-message {
-                font-size: clamp(0.8rem, 2vw, 1rem);
-            }
-
-            .sorry-image {
-                width: clamp(120px, 30vw, 180px);
-                height: clamp(120px, 30vw, 180px);
-            }
-
             .buttons {
-                flex-direction: column;
-                gap: 10px;
-                align-items: center;
+                gap: 15px;
             }
 
             .btn {
-                width: 70px;
-                height: 70px;
-                font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+                width: 80px;
+                height: 80px;
             }
 
             .modal-content {
-                padding: 20px;
-                margin: 10px;
+                padding: 30px 20px;
             }
         }
 
         @media (max-width: 480px) {
-            .apology-card {
-                padding: 15px;
-                margin: 5px;
-                border-radius: 15px;
+            .compliment-card {
+                padding: 25px 15px;
+                border-radius: 18px;
             }
 
-            .sorry-text {
-                font-size: clamp(1.2rem, 4vw, 2rem);
-            }
-
-            .modal-content {
-                padding: 15px;
-                margin: 5px;
+            .buttons {
+                gap: 12px;
             }
 
             .btn {
-                width: 60px;
-                height: 60px;
-                font-size: clamp(0.7rem, 1.6vw, 0.8rem);
+                width: 75px;
+                height: 75px;
+                font-size: 0.9rem;
+            }
+
+            .compliment-image {
+                width: 140px;
+                height: 140px;
+            }
+
+            .modal-content {
+                padding: 25px 15px;
             }
 
             .close-btn {
-                padding: 10px 20px;
+                padding: 12px 28px;
             }
         }
     </style>
@@ -499,25 +589,30 @@
 
 <body>
     <div class="bg-overlay"></div>
-    
+    <div class="gold-dust"></div>
+
     <div class="container">
-        <div class="apology-card">
-            <h1 class="sorry-text">XIN LỖI BẠN</h1>
-            <p class="apology-message">
-                Mình biết mình đã làm sai... 🥺<br>
-                Bạn tha thứ cho mình nha? <span class="loading-heart">💖</span>
+        <div class="compliment-card">
+            <div class="gold-border"></div>
+            <div class="floating-text" style="top: 20%; left: 10%;">Tuyệt vời</div>
+            <div class="floating-text" style="top: 70%; right: 15%;">Lộng lẫy</div>
+            <div class="floating-text" style="top: 40%; right: 10%;">Quyến rũ</div>
+
+            <h1 class="compliment-text">Trả lời câu hỏi nèk</h1>
+            <p class="compliment-message">
+                Ảnh ai mà đẹp thế ?
             </p>
 
             <div class="image-container">
-                <img src="anh-nen-xin-loi-cho-dien-thoai_012539562.jpg" alt="Xin Lỗi" class="sorry-image">
+                <img src="z6802679923344_9a746e145799ab1a8eb11c813a4763dd.jpg" alt="Compliment Image" class="compliment-image">
             </div>
 
             <div class="buttons">
                 <button class="btn btn-yes" onclick="showModal('yes')">
-                    Có <span class="loading-heart">❤️</span>
+                    Đẹp quá trời <span>❤️</span>
                 </button>
                 <button class="btn btn-no" onclick="handleNoClick()">
-                    Không <span class="loading-heart">😣</span>
+                    Hong đẹp <span>🥹</span>
                 </button>
             </div>
         </div>
@@ -525,132 +620,168 @@
 
     <div id="modal" class="modal">
         <div class="modal-content">
-            <div id="modal-text" class="modal-text"></div>
-            <button class="close-btn" onclick="closeModal()">Đóng nha</button>
+            <div class="gold-border"></div>
+            <div id="modal-text" class="modal-text">
+                <div style="font-size: 4rem; margin: 20px 0; color: #d4af37; animation: heartbeat 1s infinite;">❤️</div>
+                <div
+                    style="font-size: 1.8rem; margin-bottom: 25px; font-family: 'Cormorant Garamond', serif; color: #8a4b6e;">
+                </div>
+                <p>Xinh quá tròi -.-</p>
+                <a href="https://www.facebook.com/nguyen.huu.khanh.250505" target="_blank" class="facebook-link">
+                    <svg class="facebook-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
+                    </svg>
+                    Nhắn tin cho tui đi
+                </a>
+            </div>
+            <button class="close-btn" onclick="closeModal()">Chả thèm nhắn</button>
         </div>
     </div>
 
     <script>
+        // Tạo hiệu ứng kim tuyến và hoa hồng rơi
         function createParticles() {
-            const particleTypes = ['particle-1', 'particle-2'];
-            for (let i = 0; i < 40; i++) {
-                const particle = document.createElement('div');
-                particle.className = `particle ${particleTypes[Math.floor(Math.random() * particleTypes.length)]}`;
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDuration = (3 + Math.random() * 3) + 's';
-                particle.style.animationDelay = Math.random() * 1 + 's';
-                document.body.appendChild(particle);
-                setTimeout(() => particle.remove(), 6000);
-            }
+            setInterval(() => {
+                for (let i = 0; i < 3; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = `particle particle-${Math.random() > 0.5 ? '1' : '2'}`;
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.animationDuration = (4 + Math.random() * 4) + 's';
+                    particle.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(particle);
+                    setTimeout(() => particle.remove(), 8000);
+                }
+            }, 1000);
         }
 
-        function createHearts() {
+        function createRoses() {
             setInterval(() => {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = '<div class="heart-shape"></div>';
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.animationDuration = (6 + Math.random() * 2) + 's';
-                heart.style.animationDelay = Math.random() * 1 + 's';
-                document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 8000);
+                const rose = document.createElement('div');
+                rose.className = 'rose';
+                rose.style.left = Math.random() * 100 + '%';
+                rose.style.animationDuration = (10 + Math.random() * 5) + 's';
+                rose.style.animationDelay = Math.random() * 3 + 's';
+                document.body.appendChild(rose);
+                setTimeout(() => rose.remove(), 15000);
             }, 2000);
         }
 
+        // Hiển thị modal khi nhấn nút Đồng ý
         function showModal(type) {
             const modal = document.getElementById('modal');
-            const modalText = document.getElementById('modal-text');
+            modal.style.display = 'block';
 
-            if (type === 'yes') {
-                modalText.innerHTML = `
-                    <div style="font-size: 2.5rem; margin-bottom: 20px; animation: heartbeat 0.8s infinite;">🥰💖</div>
-                    <div style="font-size: 1.2rem; margin-bottom: 15px;">Cảm ơn bạn đã tha thứ nè! ❤️</div>
-                    <div style="margin-bottom: 20px; font-size: 1.1rem; color: #ff69b4;">Mình hứa hông làm bạn buồn nữa! 💕</div>
-                    <div style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, rgba(255,182,193,0.1), rgba(255,245,247,0.1)); border-radius: 15px; border: 2px solid rgba(255,182,193,0.2); box-shadow: 0 5px 15px rgba(255,182,193,0.2);">
-                        <div style="margin-bottom: 15px; font-size: 1rem;">Hì hì, bạn tốt quá trời! 🥳</div>
-                        <a href="https://www.facebook.com/ianbuthna0909" target="_blank" class="facebook-link">
-                            <svg class="facebook-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M22.675 0H1.325C.593 0 .01.593.01 1.325v21.351C.01 23.406.593 24 1.325 24H12.82v-9.294H9.692V11.01h3.127V8.41c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24h-1.918c-1.504 0-1.796.715-1.796 1.763v2.31h3.592l-.467 3.696h-3.125V24h6.127c.73 0 1.324-.593 1.324-1.324V1.325C24 .593 23.406 0 22.675 0z"/>
-                            </svg>
-                            💬 Nhắn tin cho mình nè
-                        </a>
-                    </div>
-                `;
-                for (let i = 0; i < 20; i++) {
-                    setTimeout(() => {
-                        const celebrationHeart = document.createElement('div');
-                        celebrationHeart.className = 'celebration-heart';
-                        celebrationHeart.style.left = Math.random() * 100 + '%';
-                        celebrationHeart.innerHTML = ['💖', '💕', '❤️', '🥰'][Math.floor(Math.random() * 4)];
-                        document.body.appendChild(celebrationHeart);
-                        setTimeout(() => celebrationHeart.remove(), 3000);
-                    }, i * 50);
-                }
-                modal.style.display = 'block';
-            }
+            // Hiệu ứng confetti
+            createCelebration();
         }
 
+        // Xử lý khi nhấn nút Ngại quá
         function handleNoClick() {
             const yesBtn = document.querySelector('.btn-yes');
             const noBtn = document.querySelector('.btn-no');
-            
-            // Tăng kích thước nút "Có" mỗi lần bấm nút "Không"
+
+            // Tăng kích thước nút Đồng ý
             let currentScale = parseFloat(yesBtn.dataset.scale || '1');
-            currentScale += 0.15; // Tăng kích thước nhanh hơn
-            if (currentScale > 2) currentScale = 2; // Giới hạn tối đa
-            
+            currentScale += 0.15;
+            if (currentScale > 1.5) currentScale = 1.5;
             yesBtn.dataset.scale = currentScale;
             yesBtn.style.transform = `scale(${currentScale})`;
-            yesBtn.style.zIndex = '100';
-            yesBtn.style.animation = 'wiggle 0.5s ease-in-out';
-            
-            // Giảm kích thước nút "Không" một chút
+
+            // Giảm kích thước nút Ngại quá
             let noScale = parseFloat(noBtn.dataset.scale || '1');
-            noScale -= 0.08;
-            if (noScale < 0.5) noScale = 0.5;
+            noScale -= 0.1;
+            if (noScale < 0.7) noScale = 0.7;
             noBtn.dataset.scale = noScale;
             noBtn.style.transform = `scale(${noScale})`;
-            
-            // Tạo hiệu ứng particles
+
+            // Hiệu ứng rung
+            noBtn.style.animation = 'shake 0.5s';
+            setTimeout(() => {
+                noBtn.style.animation = '';
+            }, 500);
+
+            // Tạo hiệu ứng kim tuyến
             for (let i = 0; i < 10; i++) {
                 setTimeout(() => {
-                    const particle = document.createElement('div');
-                    particle.style.position = 'fixed';
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.top = Math.random() * 100 + '%';
-                    particle.style.width = '6px';
-                    particle.style.height = '6px';
-                    particle.style.background = 'linear-gradient(45deg, #ffb6c1, #ff69b4)';
-                    particle.style.borderRadius = '50%';
-                    particle.style.animation = 'float 2s ease-out forwards';
-                    particle.style.boxShadow = '0 0 10px rgba(255, 182, 193, 0.6)';
-                    document.body.appendChild(particle);
-                    setTimeout(() => particle.remove(), 2000);
-                }, i * 30);
+                    createGoldParticles(noBtn);
+                }, i * 100);
             }
         }
 
+        // Tạo kim tuyến bay ra từ nút
+        function createGoldParticles(element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < 5; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle particle-1';
+                particle.style.position = 'fixed';
+                particle.style.left = centerX + 'px';
+                particle.style.top = centerY + 'px';
+                particle.style.width = '6px';
+                particle.style.height = '6px';
+                particle.style.animation = 'goldParticle 1.5s ease-out forwards';
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 1500);
+            }
+        }
+
+        // Tạo hiệu ứng ăn mừng
+        function createCelebration() {
+            const emojis = ['❤️', '💖', '💕', '🥰', '✨', '🌟', '💫', '💐', '🌹'];
+
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const celebration = document.createElement('div');
+                    celebration.className = 'celebration';
+                    celebration.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    celebration.style.left = Math.random() * 100 + '%';
+                    celebration.style.fontSize = (1 + Math.random() * 2) + 'rem';
+                    celebration.style.animationDuration = (2 + Math.random() * 1) + 's';
+                    document.body.appendChild(celebration);
+                    setTimeout(() => celebration.remove(), 3000);
+                }, i * 100);
+            }
+        }
+
+        // Đóng modal
         function closeModal() {
             const modal = document.getElementById('modal');
             modal.style.display = 'none';
         }
 
+        // Hiệu ứng di chuột lên card
         document.addEventListener('mousemove', (e) => {
-            const card = document.querySelector('.apology-card');
+            const card = document.querySelector('.compliment-card');
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
-            const rotateX = (y / rect.height) * 5;
-            const rotateY = (x / rect.width) * 5;
-            card.style.transform = `perspective(800px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+
+            const rotateX = (y / rect.height) * 4;
+            const rotateY = (x / rect.width) * 4;
+
+            card.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+            card.style.boxShadow = `
+                0 25px 60px rgba(188, 143, 143, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+                0 0 40px rgba(212, 175, 55, 0.2) inset,
+                ${rotateY / 2}px ${rotateX / 2}px 20px rgba(0, 0, 0, 0.1)`;
         });
 
         document.addEventListener('mouseleave', () => {
-            const card = document.querySelector('.apology-card');
-            card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
+            const card = document.querySelector('.compliment-card');
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+            card.style.boxShadow = `
+                0 15px 50px rgba(188, 143, 143, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+                0 0 30px rgba(212, 175, 55, 0.1) inset`;
         });
 
+        // Hiệu ứng khi nhấn vào bất kỳ đâu
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.btn') && !e.target.closest('.modal')) {
                 const ripple = document.createElement('div');
@@ -659,18 +790,61 @@
                 ripple.style.top = e.clientY + 'px';
                 ripple.style.width = '0px';
                 ripple.style.height = '0px';
-                ripple.style.background = 'radial-gradient(circle, rgba(255, 182, 193, 0.4), transparent)';
+                ripple.style.background = 'radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent)';
                 ripple.style.borderRadius = '50%';
                 ripple.style.transform = 'translate(-50%, -50%)';
                 ripple.style.animation = 'ripple 0.8s ease-out forwards';
+                ripple.style.zIndex = '100';
                 document.body.appendChild(ripple);
                 setTimeout(() => ripple.remove(), 800);
             }
         });
 
+        // Tạo các hiệu ứng khi tải trang
         window.onload = () => {
             createParticles();
-            createHearts();
+            createRoses();
+
+            // Thêm CSS keyframes động
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    25% { transform: translateX(-10px); }
+                    50% { transform: translateX(10px); }
+                    75% { transform: translateX(-5px); }
+                }
+                
+                @keyframes goldParticle {
+                    0% {
+                        transform: translate(0, 0) scale(1);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * -100 - 50}px) scale(0);
+                        opacity: 0;
+                    }
+                }
+                
+                @keyframes ripple {
+                    0% {
+                        width: 0px;
+                        height: 0px;
+                        opacity: 0.7;
+                    }
+                    100% {
+                        width: 300px;
+                        height: 300px;
+                        opacity: 0;
+                    }
+                }
+                
+                @keyframes heartbeat {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                }
+            `;
+            document.head.appendChild(style);
         };
     </script>
 </body>
